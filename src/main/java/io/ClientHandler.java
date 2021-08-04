@@ -33,7 +33,6 @@ public class ClientHandler {
     }
 
     public void closeClientHandler() {
-        System.out.printf("Running client-handler[%d] cleanup...", this.id);
         try {
             this.serverOut.close();
             this.serverIn.close();
@@ -42,7 +41,6 @@ public class ClientHandler {
         catch(IOException e) {
             e.printStackTrace();
         }
-        System.out.printf("Client-handler[%d] cleanup completed...", this.id);
     }
 
     public Response receiveResponseFromClient() {

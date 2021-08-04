@@ -46,7 +46,7 @@ public class Server {
         while (true) {
             try {
                 Socket clientSocket = serverSocket.accept();
-                if (Objects.isNull(this.waitingClient) || this.waitingClient.getSocket().getInputStream().read() == -1) {
+                if (Objects.isNull(this.waitingClient)) {
                     this.waitingClient = new ClientHandler(clientSocket);
                     Response response = new Response("Waiting for an opponent... \n", false);
                     this.waitingClient.sendResponseToClient(response);
@@ -70,7 +70,7 @@ public class Server {
     }
 
     public static void main(String[] args) {
-        int port = 5000;  // Integer.parseInt(args[0]);
+        int port = Integer.parseInt(args[0]);
         Global.server = new Server(port);
         Global.server.runServer();
     }

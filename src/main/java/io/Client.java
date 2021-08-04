@@ -64,9 +64,8 @@ public class Client {
     }
 
     public static void main(String[] args) {
-        String address = "127.0.0.1";  // args[0];
-        int port = 5000;  // Integer.parseInt(args[1]);
-        Client client = new Client(address, port);
+        String[] url = args[0].split(":");
+        Client client = new Client(url[0], Integer.parseInt(url[1]));
         client.startInteraction();
     }
 
